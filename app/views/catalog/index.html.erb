@@ -1,0 +1,10 @@
+<div class="container">
+	<% @books.each do |book| %>
+		<div class="line_item">
+			<%= image_tag book.avatar.url %>
+			<h2><%= book.title %></h2>
+			<%= book.description %>
+			<%= book.author %>
+		</div>
+	<% end %>
+</div>

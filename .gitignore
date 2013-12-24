@@ -14,3 +14,14 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+
+config/database.yml
+config/social_config.yml
+public/system/*
+public/files/
+public/images/
+public/pub/
+public/assets
+public/ckeditor_assets/attachments
+public/ckeditor_assets/pictures
