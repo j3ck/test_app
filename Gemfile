@@ -4,6 +4,9 @@ gem 'bootstrap-sass'
 gem 'bootstrap-will_paginate'
 gem 'jquery-rails'
 
+# Images
+gem "paperclip", "~> 3.0"
+
 # Authorization for users
 gem 'devise'
 gem 'cancan'
