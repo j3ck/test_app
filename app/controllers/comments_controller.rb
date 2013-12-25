@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.find_by_premoderation(true)
+    @comments = Comment.all
   end
 
   # GET /comments/1
@@ -69,6 +69,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:email, :name, :content, :premoderation)
+      params.require(:comment).permit(:email, :name, :content, :premoderation, :book_id)
     end
 end
