@@ -10,21 +10,25 @@
       <p><%= @book.description %></p>
       </div>
     </div>
-
-<div>
+</div>
+<div class="jumbotron">
   <h4>Comments:</h4>
+  <form role="form">
+  <textarea class="form-control" rows="3"></textarea>
+  <button type="submit" class="btn btn-primary">Send</button>
+  </form>
   <% @book.comments.each do |comment| %>
     <% if comment.premoderation? %>
-    <div>
-      <%= comment.email %>
-      <%= comment.name %>
-      <%= comment.content %>
+    <div class="container">
+      <h3 class="text-primary"><%= comment.name %></h3>
+      <h4><small><%= comment.created_at %></small></h4>
+      <p><%= comment.content %></p>
     </div>
     <% end %>
   <% end %>
 </div>
     
-</div>
+
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
