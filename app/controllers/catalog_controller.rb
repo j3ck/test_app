@@ -1,6 +1,6 @@
 class CatalogController < ApplicationController
 
 	def index
-		@books = Book.order(:title)
+		@books = Book.paginate(page: params[:page], :per_page => 2)
 	end
 end

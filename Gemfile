@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'bootstrap-sass'
 gem 'bootstrap-will_paginate'
 gem 'jquery-rails'
+gem 'will_paginate', '3.0.5'
 
 # Images
 gem "paperclip", "~> 3.0"
