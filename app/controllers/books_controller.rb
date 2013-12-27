@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  load_and_authorize_resource
   before_filter :authenticate_user!, :except => [:show, :index]
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 

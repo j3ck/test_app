@@ -28,5 +28,6 @@
 </table>
 
 <br>
-
+<% if can? @create, @book %>
 <%= link_to 'New Book', new_book_path %>
+<% end %>

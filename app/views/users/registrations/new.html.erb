@@ -9,6 +9,10 @@
   <div><%= f.label :username %><br />
   <%= f.text_field :username %></div>
 
+  <div>
+    <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+  </div>
+
   <div><%= f.label :password %><br />
   <%= f.password_field :password %></div>
 
