@@ -14,6 +14,7 @@
 <div class="jumbotron">
   <h4>Comments:</h4>
   <%= render 'shared/add_comment_form' %>
+  <%= render 'shared/comments' %>
   <% @comments.each do |comment| %>
     <% if comment.premoderation? %>
     <div class="container">
