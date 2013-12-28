@@ -1,0 +1,22 @@
+<div class="jumbotron">
+<table class="table table-bordered table-hover">
+  <tr class="info">
+    <td>Username</td>
+    <td>Email</td>
+    <td>Role</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <% @users.each do |user| %>
+  <tr class="">
+      <td><%= user.username %></td>
+      <td><%= user.email %></td>
+      <td><%= user.role %></td>
+      <td><%= link_to 'Show', user %></td>
+      <td><%= link_to 'Edit', edit_user_path(user) %></td>
+      <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+</table>
+</div>
