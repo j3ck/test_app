@@ -1,0 +1,12 @@
+<%= form_for @comment, html: {role:"form"} do |f| %>
+	<div class="form-group">
+		<%= f.text_field :name, class:"form-control", placeholder: "Name" %>
+	</div>
+	<div class="form-group">
+		<%= f.text_field :email, class:"form-control", placeholder: "Email" %>
+	</div>
+	<%= f.text_area :content, class: "form-control", placeholder: "Content" %>
+	<%= f.check_box :premoderation %>
+	<%= f.hidden_field :book_id %>
+	<%= f.submit "Send", class: "btn btn-primary" %>
+<% end %>
