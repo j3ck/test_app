@@ -2,12 +2,16 @@
 <div class="jumbotron">
     <div class="row">
       <div class="col-xs-6 col-md-4">
-      <%= image_tag @book.avatar.url, class:"img-thumbnail" %>
+        <%= image_tag @book.avatar.url, class:"img-thumbnail" %>
+        <h4>Other books:</h4>
+          <% other_books_current_author(@book.author,@book.id).each do |e| %>
+            <%= link_to e.title, e %> <br>
+          <% end %>
       </div>
       <div class="col-xs-12 col-md-8">
-      <h2><%= @book.title %></h2>
-      <p class="text-muted"><%= @book.author %></p>
-      <p><%= @book.description %></p>
+        <h2><%= @book.title %></h2>
+        <p class="text-muted"><%= @book.author %></p>
+        <p><%= @book.description %></p>
       </div>
     </div>
 </div>

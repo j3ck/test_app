@@ -1,33 +1,30 @@
 <h1>Listing comments</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Name</th>
-      <th>Content</th>
-      <th>Premoderation</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @comments.each do |comment| %>
-      <tr>
-        <td><%= comment.email %></td>
-        <td><%= comment.name %></td>
-        <td><%= comment.content %></td>
-        <td><%= comment.premoderation %></td>
-        <td><%= link_to 'Show', comment %></td>
-        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+<table class="table table-bordered table-hover">
+  <tr class="info">
+    <td>Email</td>
+    <td>Name</td>
+    <td>Content</td>
+    <td>Premoderation</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <% @comments.each do |comment| %>
+  <% if comment.premoderation %>
+  <tr class="success">
+  <% else %>
+  <tr class="warning">
+  <% end %>
+      <td><%= comment.email %></td>
+      <td><%= comment.name %></td>
+      <td><%= comment.content %></td>
+      <td><%= comment.premoderation %></td>
+      <td><%= link_to 'Show', comment %></td>
+      <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+      <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+  
 </table>
-
-<br>
-
 <%= link_to 'New Comment', new_comment_path %>
