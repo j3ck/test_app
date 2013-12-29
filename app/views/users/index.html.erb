@@ -1,4 +1,5 @@
-<div class="jumbotron">
+<h2>Users</h2>
+<%= link_to 'New User', new_user_path %>
 <table class="table table-bordered table-hover">
   <tr class="info">
     <td>Username</td>
@@ -9,7 +10,7 @@
     <td></td>
   </tr>
   <% @users.each do |user| %>
-  <tr class="">
+  <tr class="warning">
       <td><%= user.username %></td>
       <td><%= user.email %></td>
       <td><%= user.role %></td>
@@ -19,4 +20,3 @@
   </tr>
   <% end %>
 </table>
-</div>

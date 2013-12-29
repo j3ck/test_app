@@ -1,4 +1,15 @@
 <%= form_for @comment, html: {role:"form"} do |f| %>
+<% if @comment.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+  <ul>
+  <% @comment.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
 	<div class="form-group">
 		<%= f.text_field :name, class:"form-control", placeholder: "Name" %>
 	</div>
@@ -6,7 +17,6 @@
 		<%= f.text_field :email, class:"form-control", placeholder: "Email" %>
 	</div>
 	<%= f.text_area :content, class: "form-control", placeholder: "Content" %>
-	<%= f.check_box :premoderation %>
 	<%= f.hidden_field :book_id %>
 	<%= f.submit "Send", class: "btn btn-primary" %>
 <% end %>
