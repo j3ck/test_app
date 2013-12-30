@@ -1,21 +1,10 @@
+<div class="jumbotron">
 <h2>Sign up</h2>
 
 <%= form_for(@user) do |f| %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+<%= render 'form', f: f %>
 
-  <div><%= f.label :username %><br />
-  <%= f.text_field :username %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-	<%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
-
-  <div><%= f.submit "Sign up" %></div>
+  <div><%= f.submit "Sign up", class: "btn btn-primary" %></div>
 <% end %>
-
+</div>
