@@ -1,0 +1,15 @@
+<% @searches.each do |search| %>
+	<div class="jumbotron">
+		<div class="row">
+		  <div class="col-xs-6 col-md-4">
+			<%= link_to image_tag(search.avatar.url, class:"img-thumbnail large"), search %>
+		  </div>
+		  <div class="col-xs-12 col-md-8">
+			<h2><%= link_to search.title, search %></h2>
+			<p class="text-muted"><%= search.author %></p>
+			<p><%= truncate(search.description, length: 50) %></p>
+			<h3><small>Comments: <%= comments_count(search) %></small></h3>
+		  </div>
+		</div>
+	</div>
+<% end %>
