@@ -1,7 +1,7 @@
 <div class="jumbotron">
     <div class="row">
       <div class="col-xs-6 col-md-4">
-        <%= image_tag @book.avatar.url, class:"img-thumbnail large" %>
+        <%= image_tag @book.avatar.url(:large), class:"img-thumbnail" %>
         <h4>Other books:</h4>
           <% other_books_current_author(@book.author,@book.id).each do |e| %>
             <%= link_to e.title, e %> <br>
