@@ -16,9 +16,11 @@
 			        	<%= link_to 'Edit', edit_comment_path(comment) %>
 			        	<%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
 	      			<% end %>
-			          <%= link_to 'Reply', new_comment_path(:parent_id => comment, :book_id => comment.book_id), :class => 'comment-answer-link' %>
 	      		</div>
 			</div>
 		<% end %>
+		<div class="nested_comments">
+			          <%= link_to 'Reply', new_comment_path(:parent_id => comment, :book_id => comment.book_id), :remote => true, :class => 'comment-answer-link' %>
+		</div>
 	</div>
 <% end %>

@@ -1,5 +1,5 @@
 <div class="to_comment">
-	<%= form_for comment, :html => {:autocomplete => 'off', :role => "form"} do |f| %>
+	<%= form_for comment, :format => :json, :remote => true, :html => {:autocomplete => 'off', :role => "form"} do |f| %>
 		<%= f.hidden_field :book_id, :value => comment.book_id %>
 		<% if comment.parent %>
 	        <%#= hidden_field_tag :parent_id, comment.parent_id %>
@@ -11,7 +11,15 @@
 		<div class="form-group">
 			<%= f.text_field :email, class:"form-control", placeholder: "Email" %>
 		</div>
+		<div class="form-group">
 		<%= f.text_area :content, class: "form-control", placeholder: "Content" %>
+		</div>
+		<div class="form-group">
+    		<%= f.check_box :premoderation, class:"form-control" %>
+  		</div>
 		<%= f.submit "Send", class: "btn btn-primary" %>	
+		<% if comment.parent %>
+			<%= link_to 'cancel', '#', :class => 'button cancel-comment-link' %>
+		<% end %>
 	<% end %>
 </div>

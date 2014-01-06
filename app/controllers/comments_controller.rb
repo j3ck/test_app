@@ -17,6 +17,8 @@ class CommentsController < ApplicationController
   # GET /comments/new
   def new
     @comment = Comment.new(:parent_id => params[:parent_id], :book_id => params[:book_id])
+    form_html = render_to_string( :partial => 'comments/add_comment', :formats => [:html], :locals => { :comment => @comment } )
+    render :json => { :form_html => form_html }
   end
 
   # GET /comments/1/edit
@@ -28,15 +30,21 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
 
-    respond_to do |format|
+    #respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment.book, notice: 'Comment was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @comment }
-      else
-        format.html { redirect_to @comment.book }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        comment_html = render_to_string( :partial => 'comments/comment', :formats => [:html], :locals => { :comment => @comment } )
+        form_html = render_to_string( :partial => 'comments/add_comment',
+                                      :formats => [:html],
+                                      :locals => { :comment => @comment } )
+      #  format.html { redirect_to @comment.book, notice: 'Comment was successfully created.' }
+      #  format.json { render action: 'show', status: :created, location: @comment }
+      #else
+      #  format.html { redirect_to @comment.book }
+      #  format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
-    end
+    #end
+    render :json => { :create_status => @comment, :form_html => form_html,
+                      :comment_html => comment_html, :book_id => @comment.book_id }
   end
 
   # PATCH/PUT /comments/1
