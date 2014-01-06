@@ -11,12 +11,13 @@
 				<div class="panel-body">
 	        		<p><%= comment.content %></p>
 	      		</div>
-	      		<% if can? :update, @comment %>
-	      			<div class="panel-footer">
-			          <%= link_to 'Edit', edit_comment_path(comment) %>
-			          <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
-	      			</div>
-	      		<% end %>
+	      		<div class="panel-footer">
+	      			<% if can? :update, @comment %>
+			        	<%= link_to 'Edit', edit_comment_path(comment) %>
+			        	<%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+	      			<% end %>
+			          <%= link_to 'Reply', new_comment_path(:parent_id => comment, :book_id => comment.book_id), :class => 'comment-answer-link' %>
+	      		</div>
 			</div>
 		<% end %>
 	</div>

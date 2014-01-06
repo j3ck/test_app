@@ -1,6 +1,10 @@
 <div class="to_comment">
 	<%= form_for comment, :html => {:autocomplete => 'off', :role => "form"} do |f| %>
 		<%= f.hidden_field :book_id, :value => comment.book_id %>
+		<% if comment.parent %>
+	        <%#= hidden_field_tag :parent_id, comment.parent_id %>
+	        <%= f.hidden_field :parent_id, :value => comment.parent_id %>
+	    <% end %>
 		<div class="form-group">
 			<%= f.text_field :name, class:"form-control", placeholder: "Name" %>
 		</div>

@@ -13,6 +13,7 @@ class Ability
         can [:index, :read, :update, :destroy], Comment
     else
         can :show, Book
+        can :new, Comment
     end
 
     #
