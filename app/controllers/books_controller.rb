@@ -13,7 +13,7 @@ class BooksController < ApplicationController
   # GET /books/1.json
   def show
     @comment = @book.comments.build
-    @comments = @book.comments.order("created_at DESC")
+    @comments = @book.comments
   end
 
   # GET /books/new
