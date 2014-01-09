@@ -1,26 +1,22 @@
 <%= div_for comment, :class => "comment_wrapper" do %>
 	<div class="comment">
 		<% if comment.premoderation %>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-			        <ul class="nav">
-			          <li><h3 class="text-primary"><%= comment.name %></h3></li>
-			          <li><h4><small><%= comment.created_at %></small></h4></li>
-			        </ul>		
+			<blockquote>
+				<div class="comment_head">	
+					<p class="text-primary"><%= comment.name %></p>
+					<p><small><%= comment.created_at %></small></p>
 				</div>
-				<div class="panel-body">
-	        		<p><%= comment.content %></p>
-	      		</div>
-	      		<div class="panel-footer">
-	      			<% if can? :update, @comment %>
-			        	<%= link_to 'Edit', edit_comment_path(comment) %>
-			        	<%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
-	      			<% end %>
-	      		</div>
-			</div>
+		        <div class="comment_body">
+		        	<p><%= comment.content %></p>
+		        </div>
+	  			<% if can? :update, @comment %>
+		        	<%= link_to 'Edit', edit_comment_path(comment) %>
+		        	<%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+	  			<% end %>
+		        <span><%= link_to 'Reply', new_comment_path(:parent_id => comment, :book_id => comment.book_id), :remote => true, :class => 'comment-answer-link' %></span>
+			</blockquote>
 		<% end %>
 		<div class="nested_comments">
-			          <%= link_to 'Reply', new_comment_path(:parent_id => comment, :book_id => comment.book_id), :remote => true, :class => 'comment-answer-link' %>
 		</div>
 	</div>
 <% end %>

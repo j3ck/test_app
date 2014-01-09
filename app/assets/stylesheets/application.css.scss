@@ -21,3 +21,17 @@
 .nested_comments .nested_comments .nested_comments .nested_comments {
   margin-left: 0;
 }
+
+.comment { 
+	border-left: 3px solid #ddd;
+}
+
+#comments {
+	margin-top: 30px;
+}
+
+.comment_head {
+	p {
+		display: inline-block;
+	}
+}
