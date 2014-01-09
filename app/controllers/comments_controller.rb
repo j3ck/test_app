@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
         comment_html = render_to_string( :partial => 'comments/comment', :formats => [:html], :locals => { :comment => @comment } )
         form_html = render_to_string( :partial => 'comments/add_comment',
                                       :formats => [:html],
-                                      :locals => { :comment => @comment } )
+                                      :locals => { :comment => @comment.book.comments.build } )
       #  format.html { redirect_to @comment.book, notice: 'Comment was successfully created.' }
       #  format.json { render action: 'show', status: :created, location: @comment }
       #else

@@ -20,7 +20,7 @@ $(document).ready(function() {
     $(document).on('click', '.cancel-comment-link', function(e) {
         e.preventDefault()
         $(this).closest('.comment_wrapper').fadeOut('slow', function() {
-            $(this).closest('.nested_comments').find('.comment-answer-link').fadeIn()
+            $(this).closest('.nested_comments').siblings('blockquote').find('.comment-answer-link').fadeIn()
             $(this).remove()
         })
     })
@@ -52,7 +52,7 @@ function appendNestedComment(commentDiv, status, formHTML, commentHTML, count) {
             commentDiv.replaceWith(commentHTML).fadeIn('slow')
         })
 
-        commentDiv.closest('.nested_comments').find('.comment-answer-link').show()
+        commentDiv.closest('.nested_comments').siblings('blockquote').find('.comment-answer-link').show()
     } else {
         commentDiv.html(formHTML).find('form').addClass('new_comment_comments_form')
     }
