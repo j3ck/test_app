@@ -16,7 +16,10 @@
 		        <span><%= link_to 'Reply', new_comment_path(:parent_id => comment, :book_id => comment.book_id), :remote => true, :class => 'comment-answer-link' %></span>
 			</blockquote>
 		<% end %>
-		<div class="nested_comments">
-		</div>
+		<% if comment.children %>
+			<div class="nested_comments">
+				<%= render :partial => "comments/comment", :collection => comment.children, :as => 'comment' %>
+			</div>
+		<% end %>
 	</div>
 <% end %>

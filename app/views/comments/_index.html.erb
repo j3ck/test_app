@@ -2,6 +2,5 @@
 	<%= render "comments/add_comment", :comment => @book.comments.build %>
 </div>
 <div id="comments">
-	<%#= render :partial => "comments/comment", :collection => @comments, :as => 'comment' %>
-	<%= nested_comments @comments.arrange(:order => :created_at) %>
+	<%= render :partial => "comments/comment", :collection => @comments.roots, :as => 'comment' %>
 </div>
