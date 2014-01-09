@@ -5,7 +5,7 @@ gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
 gem 'ancestry'
 gem 'bootstrap-sass'
 gem 'bootstrap-will_paginate'
-gem 'jquery-rails'
+gem 'jquery-turbolinks'
 gem 'will_paginate', '3.0.5'
 gem "paperclip", "~> 3.0"
 
