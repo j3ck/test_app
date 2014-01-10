@@ -29,9 +29,10 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
-
+    @comment.premoderation = true
     #respond_to do |format|
-      if @comment.save
+    is_create = @comment.save
+      if is_create
         comment_html = render_to_string( :partial => 'comments/comment', :formats => [:html], :locals => { :comment => @comment } )
         form_html = render_to_string( :partial => 'comments/add_comment',
                                       :formats => [:html],
@@ -41,9 +42,11 @@ class CommentsController < ApplicationController
       #else
       #  format.html { redirect_to @comment.book }
       #  format.json { render json: @comment.errors, status: :unprocessable_entity }
+          else
+      form_html = render_to_string( :partial => 'comments/add_comment', :formats => [:html], :locals => { :comment => @comment } )
       end
     #end
-    render :json => { :create_status => @comment, :form_html => form_html,
+    render :json => { :create_status => is_create, :form_html => form_html,
                       :comment_html => comment_html, :book_id => @comment.book_id }
   end
 
