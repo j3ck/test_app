@@ -1,8 +1,10 @@
 <div class="to_comment">
 	<%= form_for comment, :format => :json, :remote => true, :html => {:autocomplete => 'off', :role => "form"} do |f| %>
 	<% if comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+      	<%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:
+      </div>
 
       <ul>
       <% comment.errors.full_messages.each do |msg| %>
