@@ -27,9 +27,6 @@
 		<div class="form-group">
 		<%= f.text_area :content, class: "form-control", placeholder: "Content" %>
 		</div>
-		<div class="form-group">
-    		<%= f.check_box :premoderation, class:"form-control" %>
-  		</div>
 		<%= f.submit "Send", class: "btn btn-primary" %>	
 		<% if comment.parent %>
 			<%= link_to 'cancel', '#', :class => 'button cancel-comment-link' %>
