@@ -7,7 +7,9 @@ gem 'bootstrap-sass'
 gem 'bootstrap-will_paginate'
 gem 'jquery-turbolinks'
 gem 'will_paginate', '3.0.5'
+
 gem "paperclip", "~> 3.0"
+gem 'aws-sdk'
 
 gem 'devise'
 gem 'cancan'
