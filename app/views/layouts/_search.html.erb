@@ -1,6 +1,6 @@
 <%= form_tag search_path, :method => 'get', class:"navbar-form navbar-right", role:"search" do %>
   <div class="form-group">
-    <%= text_field_tag :search, params[:search], class:"form-control", placeholder:"Search" %>
+    <%= text_field_tag :query, params[:query], class:"form-control", placeholder:"Search" %>
   </div>
     <%= button_tag content_tag(:span, "" ,:class => "glyphicon glyphicon-search"), class:"btn btn-default" %>
 <% end %>

@@ -1,6 +1,10 @@
 class SearchController < ApplicationController
 
 	def index
-		@searches = Book.search(params[:search])
+		if params[:query].present?
+			@searches = Book.search(params[:query])
+		else
+			@searches = Book.all
+		end
 	end
 end
