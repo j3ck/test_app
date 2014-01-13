@@ -19,7 +19,11 @@
       <td><%= comment.email %></td>
       <td><%= comment.name %></td>
       <td title="<%= comment.content %>"><%= truncate(comment.content, length: 50) %></td>
-      <td><%= comment.premoderation %></td>
+      <% unless comment.premoderation %>
+        <td><%= link_to 'Moderated', moderated_comment_path(comment), :class => "moderated btn btn-success", remote: true %></td>
+      <% else %>
+        <td><%= comment.premoderation %></td>
+      <% end %>
       <td><%= comment.created_at %></td>
       <td><%= link_to 'Show', comment %></td>
       <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
