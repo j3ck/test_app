@@ -1,4 +1,8 @@
 $(document).ready(function() {
+    $('.moderated').on('click', function() {
+        $(this).fadeOut('slow')
+    })
+
     $('#new-book-comment-wrapper').on('ajax:success', '.new_comment', function(e, data, textStatus, xhr) {
         appendComment(data.create_status, data.form_html, data.comment_html, data.book_id)
     })

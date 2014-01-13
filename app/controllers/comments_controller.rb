@@ -1,7 +1,12 @@
 class CommentsController < ApplicationController
   load_and_authorize_resource except: [:create]
   before_filter :authenticate_user!, :except => [:show, :new, :create]
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, only: [:show, :edit, :update, :destroy, :moderated]
+
+  def moderated
+    @comment.update(premoderation: true)
+    redirect_to @comment.book
+  end
 
   def index
     @comments = Comment.order("premoderation ASC")

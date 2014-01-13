@@ -10,7 +10,7 @@
 	        </div>
   			<% if can? :update, @comment %>
   				<% unless comment.premoderation %>
-  					<%= link_to 'Moderated', edit_comment_path(comment), class: "btn btn-success"%>
+  					<%= link_to 'Moderated', moderated_comment_path(comment), class: "moderated btn btn-success", remote: true %>
   				<% end %>
 	        	<%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
   			<% end %>
