@@ -10,9 +10,9 @@
 	        </div>
   			<% if can? :update, @comment %>
   				<% unless comment.premoderation %>
-  					<%= link_to 'Moderated', moderated_comment_path(comment), class: "moderated btn btn-success", remote: true %>
+  					<%= link_to 'Moderated', moderated_comment_path(comment), :class => "moderated btn btn-success", remote: true %>
   				<% end %>
-	        	<%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+	        	<%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
   			<% end %>
 	        <span><%= link_to 'Reply', new_comment_path(:parent_id => comment, :book_id => comment.book_id), :remote => true, :class => 'comment-answer-link' %></span>
 		</blockquote>
