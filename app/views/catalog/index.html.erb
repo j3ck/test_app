@@ -8,7 +8,7 @@
 			<h2><%= link_to book.title, book %></h2>
 			<p class="text-muted"><%= book.author %></p>
 			<p><%= truncate(book.description, length: 50) %></p>
-			<h3><small>Comments: <%= comments_count(book) %></small></h3>
+				<h3><small>Comments: <%= book.comments.count %></small></h3>
 		  </div>
 		</div>
 	</div>

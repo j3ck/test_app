@@ -29,7 +29,6 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
-    @comment.premoderation = true
     #respond_to do |format|
     is_create = @comment.save
       if is_create
