@@ -8,8 +8,9 @@
 			<h2><%= link_to search.title, search %></h2>
 			<p class="text-muted"><%= search.author %></p>
 			<p><%= truncate(search.description, length: 50) %></p>
-			<h3><small>Comments: <%= comments_count(search) %></small></h3>
+			<h3><small>Comments: <%= search.comments.count %></small></h3>
 		  </div>
 		</div>
 	</div>
 <% end %>
+<%= will_paginate @searches %>

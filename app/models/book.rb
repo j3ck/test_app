@@ -10,18 +10,9 @@ class Book < ActiveRecord::Base
 	include Tire::Model::Search
  	include Tire::Model::Callbacks
 
-=begin
 	def self.search(params)
-		if search
-			find(:all, :conditions => ['title LIKE :search OR author LIKE :search OR description LIKE :search', { :search => "%#{search}"}])
-		else
-			find(:all)
-		end
-	end
-=end
-	def self.search(params)
-		tire.search(load: true) do
-			query { string params, default_operator: "AND" }
+		tire.search :page => params[:page], :per_page => 10, load: true do
+			query { string params[:query], default_operator: "AND" }
 		end
 	end
 end

@@ -2,9 +2,9 @@ class SearchController < ApplicationController
 
 	def index
 		if params[:query].present?
-			@searches = Book.search(params[:query])
+			@searches = Book.search(params)
 		else
-			@searches = Book.all
+			@searches = Book.paginate(page: params[:page], :per_page => 10)
 		end
 	end
 end
