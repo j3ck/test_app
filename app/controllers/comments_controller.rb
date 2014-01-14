@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   load_and_authorize_resource except: [:create]
-  before_filter :authenticate_user!, :except => [:show, :new, :create]
-  before_action :set_comment, only: [:show, :edit, :update, :destroy, :moderated]
+  before_filter :authenticate_user!, :except => [:new, :create]
+  before_action :set_comment, only: [:destroy, :moderated]
 
   def moderated
     @comment.update(premoderation: true)
@@ -12,16 +12,10 @@ class CommentsController < ApplicationController
     @comments = Comment.order("premoderation ASC")
   end
 
-  def show
-  end
-
   def new
     @comment = Comment.new(:parent_id => params[:parent_id], :book_id => params[:book_id])
     form_html = render_to_string( :partial => 'comments/add_comment', :formats => [:html], :locals => { :comment => @comment } )
     render :json => { :form_html => form_html }
-  end
-
-  def edit
   end
 
   def create
@@ -36,19 +30,7 @@ class CommentsController < ApplicationController
         form_html = render_to_string( :partial => 'comments/add_comment', :formats => [:html], :locals => { :comment => @comment } )
       end
     render :json => { :create_status => is_create, :form_html => form_html,
-                      :comment_html => comment_html, :book_id => @comment.book_id }
-  end
-
-  def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
-    end
+                      :comment_html => comment_html }
   end
 
   def destroy

@@ -4,7 +4,7 @@ $(document).ready(function() {
     })
 
     $('#new-book-comment-wrapper').on('ajax:success', '.new_comment', function(e, data, textStatus, xhr) {
-        appendComment(data.create_status, data.form_html, data.comment_html, data.book_id)
+        appendComment(data.create_status, data.form_html, data.comment_html)
     })
 
     $(document).on('ajax:before', '.comment-answer-link', function() {
@@ -18,7 +18,7 @@ $(document).ready(function() {
 
     $(document).on('ajax:success', '.new_comment_comments_form', function(e, data, textStatus, xhr) {
         var commentDiv = $(e.target).closest('.comment_wrapper')
-        appendNestedComment(commentDiv, data.create_status, data.form_html, data.comment_html, data.book_id)
+        appendNestedComment(commentDiv, data.create_status, data.form_html, data.comment_html)
     })
 
     $(document).on('click', '.cancel-comment-link', function(e) {

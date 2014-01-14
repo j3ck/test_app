@@ -2,7 +2,17 @@
 <h2>Edit</h2>
 
 <%= form_for(@user) do |f| %>
+<% if @user.errors.any? %>
+    <div id="panel panel-danger">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 <%= render 'form', f: f %>
 
 <div class="form-group"><%= f.submit "Update", class: "btn btn-primary" %></div>
