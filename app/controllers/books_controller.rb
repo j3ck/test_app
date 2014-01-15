@@ -21,7 +21,9 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-
+    if params[:url].present?
+      @book.avatar = URI.parse(params[:url])
+    end
     respond_to do |format|
       if @book.save
         format.html { redirect_to @book, notice: 'Book was successfully created.' }
