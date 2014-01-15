@@ -1,6 +1,7 @@
 Test task
 
-local: 
+local:
+* running Elasticsearch server
 * bundle install --without production
 * rails s
 
